@@ -7,6 +7,7 @@ import { Link, redirect, useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import Loader from "../components/Loader";
 
 export const loader = async () => {
   try {
@@ -68,6 +69,17 @@ function Home() {
   const baseImageUrl = "https://api.tikiti.co.zw/opn/v1/files";
 
   console.log(allevents);
+
+  const [loading, setLoading] = useState(false);
+
+  const handleBookNowClick = (id) => {
+    setLoading((prev) => ({ ...prev, [id]: true })); // Set loading for the specific button
+
+    setTimeout(() => {
+      setLoading((prev) => ({ ...prev, [id]: false }));
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navbar */}
@@ -178,16 +190,24 @@ function Home() {
                   <p className="font-bold text-lg sm:text-[14px] text-[12.8px] text-black/80">
                     From $10
                   </p>
-                  <Link to={`geteventid/${event.uid}`}>
-                    <motion.button
-                      className="mt-4 bg-green-500 text-white px-4 sm:text-[14px] text-[13px] py-2 rounded-3xl w-full"
-                      whileHover={{ scale: 1.1, backgroundColor: "#38b2ac" }}
-                      transition={{ duration: 0.3 }}
-                      whileTap={{ scale: 0.85 }}
+
+                  {loading[event.uid] ? ( // Check if the specific button is loading
+                    <Loader />
+                  ) : (
+                    <Link
+                      to={`geteventid/${event.uid}`}
+                      onClick={() => handleBookNowClick(event.uid)}
                     >
-                      Book Now
-                    </motion.button>
-                  </Link>
+                      <motion.button
+                        className="mt-4 bg-green-500 text-white px-4 sm:text-[14px] text-[13px] py-2 rounded-3xl w-full"
+                        whileHover={{ scale: 1.1, backgroundColor: "#38b2ac" }}
+                        transition={{ duration: 0.3 }}
+                        whileTap={{ scale: 0.85 }}
+                      >
+                        Book Now
+                      </motion.button>
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             </div>
