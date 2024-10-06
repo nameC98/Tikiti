@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 export const loader = async () => {
   try {
     const { data } = await axios.get(
-      "http://api.tikiti.co.zw/opn/v1/events/active"
+      "https://api.tikiti.co.zw/opn/v1/events/active"
     );
     // console.log(data.content);
     return data;
@@ -31,7 +31,7 @@ function Home() {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(
-          "http://api.tikiti.co.zw/opn/v1/files"
+          "https://api.tikiti.co.zw/opn/v1/files"
         );
         setEvents(response.data); // Assuming response data is an array of events
       } catch (error) {
@@ -65,7 +65,7 @@ function Home() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const baseImageUrl = "http://api.tikiti.co.zw/opn/v1/files";
+  const baseImageUrl = "https://api.tikiti.co.zw/opn/v1/files";
 
   console.log(allevents);
   return (

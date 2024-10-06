@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export const loader = async ({ params }) => {
   try {
     const { data } = await axios.get(
-      `http://api.tikiti.co.zw/opn/v1/events/${params.id}`
+      `https://api.tikiti.co.zw/opn/v1/events/${params.id}`
     );
     return data;
   } catch (error) {
@@ -60,7 +60,7 @@ function GetEventID() {
   const selectedEvent = useLoaderData();
   console.log(selectedEvent);
 
-  const baseImageUrl = "http://api.tikiti.co.zw/opn/v1/files";
+  const baseImageUrl = "https://api.tikiti.co.zw/opn/v1/files";
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Track if on small screens
 
