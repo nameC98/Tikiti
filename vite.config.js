@@ -9,7 +9,7 @@ export default defineConfig({
       "/opn": {
         target: "http://api.tikiti.co.zw",
         changeOrigin: true,
-        secure: false,
+
         rewrite: (path) => path.replace(/^\/opn/, "/opn"),
       },
     },
