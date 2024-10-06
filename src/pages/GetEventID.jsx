@@ -9,9 +9,11 @@ import { redirect, useLoaderData } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const loader = async ({ params }) => {
   try {
-    const { data } = await axios.get(`/opn/v1/events/${params.id}`);
+    const { data } = await axios.get(`${apiUrl}/opn/v1/events/${params.id}`);
     return data;
   } catch (error) {
     return redirect("/explore");
@@ -88,7 +90,7 @@ function GetEventID() {
   return (
     <>
       <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      {/* Sidebar for small screens */}
+
       <div className="z-50">
         <Sidebar
           isSidebarOpen={isSidebarOpen}

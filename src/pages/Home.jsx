@@ -11,9 +11,11 @@ import Sidebar from "../components/Sidebar";
 
 import Footer from "../components/Footer";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const loader = async () => {
   try {
-    const { data } = await axios.get("/opn/v1/events/active");
+    const { data } = await axios.get(`${apiUrl}/opn/v1/events/active`);
     // console.log(data.content);
     return data;
   } catch (error) {
@@ -31,7 +33,7 @@ function Home() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("/opn/v1/files");
+        const response = await axios.get(`${apiUrl}/opn/v1/files`);
         setEvents(response.data); // Assuming response data is an array of events
       } catch (error) {
         console.error("Error fetching events:", error);
