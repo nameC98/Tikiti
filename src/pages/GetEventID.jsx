@@ -1,13 +1,10 @@
-// @ts-ignore
 import Navbar from "../components/Navbar";
-// @ts-ignore
 import { FaTicket } from "react-icons/fa6";
-// @ts-ignore
 import Footer from "../components/Footer";
 import axios from "axios";
 import { redirect, useLoaderData } from "react-router-dom";
-// @ts-ignore
 import Sidebar from "../components/Sidebar";
+import { useEffect, useState } from "react";
 
 export const loader = async ({ params }) => {
   try {
