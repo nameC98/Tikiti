@@ -1,19 +1,17 @@
+// @ts-ignore
 import Navbar from "../components/Navbar";
-
+// @ts-ignore
 import { FaTicket } from "react-icons/fa6";
-
+// @ts-ignore
 import Footer from "../components/Footer";
 import axios from "axios";
 import { redirect, useLoaderData } from "react-router-dom";
-
+// @ts-ignore
 import Sidebar from "../components/Sidebar";
-import { useEffect, useState } from "react";
-
-const apiUrl = import.meta.env.VITE_API_URL;
 
 export const loader = async ({ params }) => {
   try {
-    const { data } = await axios.get(`${apiUrl}/opn/v1/events/${params.id}`);
+    const { data } = await axios.get(`/opn/v1/events/${params.id}`);
     return data;
   } catch (error) {
     return redirect("/explore");
@@ -90,7 +88,7 @@ function GetEventID() {
   return (
     <>
       <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
+      {/* Sidebar for small screens */}
       <div className="z-50">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
