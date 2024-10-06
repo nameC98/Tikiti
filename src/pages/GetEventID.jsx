@@ -1,4 +1,3 @@
-
 import Navbar from "../components/Navbar";
 
 import { FaTicket } from "react-icons/fa6";
@@ -8,6 +7,7 @@ import axios from "axios";
 import { redirect, useLoaderData } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
+import { useEffect, useState } from "react";
 
 export const loader = async ({ params }) => {
   try {

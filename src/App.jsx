@@ -4,7 +4,8 @@ import Home from "./pages/Home.jsx";
 import HomeLayout from "./pages/HomeLayout.jsx";
 import { loader as homeloader } from "./pages/Home.jsx";
 import { loader as geteventloader } from "./pages/GetEventID.jsx";
-import GetEventID from "./pages/GetEventID.jsx/index.jsx";
+import GetEventID from "./pages/GetEventID.jsx";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -26,10 +27,12 @@ function App() {
       ],
     },
   ]);
+
   return (
     <>
       <RouterProvider router={router} />
     </>
   );
 }
+
 export default App;
