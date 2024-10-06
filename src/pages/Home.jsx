@@ -4,16 +4,15 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, redirect, useLoaderData } from "react-router-dom";
-
 import Navbar from "../components/Navbar";
-
 import Sidebar from "../components/Sidebar";
-
 import Footer from "../components/Footer";
 
 export const loader = async () => {
   try {
-    const { data } = await axios.get("/opn/v1/events/active");
+    const { data } = await axios.get(
+      "http://api.tikiti.co.zw/opn/v1/events/active"
+    );
     // console.log(data.content);
     return data;
   } catch (error) {
@@ -31,7 +30,9 @@ function Home() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("/opn/v1/files");
+        const response = await axios.get(
+          "http://api.tikiti.co.zw/opn/v1/files"
+        );
         setEvents(response.data); // Assuming response data is an array of events
       } catch (error) {
         console.error("Error fetching events:", error);

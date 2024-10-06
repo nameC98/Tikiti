@@ -8,7 +8,9 @@ import { useEffect, useState } from "react";
 
 export const loader = async ({ params }) => {
   try {
-    const { data } = await axios.get(`/opn/v1/events/${params.id}`);
+    const { data } = await axios.get(
+      `http://api.tikiti.co.zw/opn/v1/events/${params.id}`
+    );
     return data;
   } catch (error) {
     return redirect("/explore");
