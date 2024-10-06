@@ -1,12 +1,12 @@
 {
   "rewrites": [
     {
-      "src": "/",
-      "dest": "/"
+      "source": "/",
+      "destination": "/"
     },
     {
-      "src": "/geteventid",
-      "dest": "/"
+      "source": "/geteventid",
+      "destination": "/"
     }
   ]
 }
